@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, jsonify
-from zeroconf import ServiceInfo, Zeroconf
+#from zeroconf import ServiceInfo, Zeroconf
 import socket
 import ipaddress
 import sys
