@@ -1,13 +1,15 @@
 from flask import Flask, render_template, request, jsonify
-from zeroconf import ServiceInfo, Zeroconf
+# from zeroconf import ServiceInfo, Zeroconf
 import socket
 import ipaddress
 import sys
-# import keyboard
-from pynput.keyboard import Controller, Key
-pkeyboard = Controller()
+import keyboard
+# from pynput.keyboard import Controller, Key
+# pkeyboard = Controller()
 
 app = Flask(__name__)
+# to write aplhanumeric use keyboard.write("A")
+# to use enter backspace space use keyboard.send("value") where send = press + release
 
 state = 0
 @app.route("/")
@@ -41,8 +43,9 @@ def action_auth(action):
 @app.route("/api/v1/ok")
 def action_ok():
     print("Enter Called")
-    pkeyboard.press(Key.enter)
-    pkeyboard.release(Key.enter)
+    keyboard.send("enter")
+    # pkeyboard.press(Key.enter)
+    # pkeyboard.release(Key.enter)
     data = {}
     data["Name"] = "Rpi"
     data["Response"] = "Ok"
@@ -55,8 +58,9 @@ def action_ok():
 @app.route("/api/v1/back")
 def backspace():
     print("backspace Called")
-    pkeyboard.press(Key.backspace)
-    pkeyboard.release(Key.backspace)
+    keyboard.send("backspace")
+    # pkeyboard.press(Key.backspace)
+    # pkeyboard.release(Key.backspace)
     data = {}
     data["Name"] = "Rpi"
     data["Response"] = "backspace"
@@ -69,8 +73,9 @@ def backspace():
 @app.route("/api/v1/exit")
 def exit():
     print("exit Called")
-    pkeyboard.press(Key.esc)
-    pkeyboard.release(Key.esc)
+    keyboard.send("esc")
+    # pkeyboard.press(Key.esc)
+    # pkeyboard.release(Key.esc)
     data = {}
     data["Name"] = "Rpi"
     data["Response"] = "exit"
@@ -83,8 +88,9 @@ def exit():
 @app.route("/api/v1/space")
 def space():
     print("space Called")
-    pkeyboard.press(Key.space)
-    pkeyboard.release(Key.space)
+    keyboard.send("space")
+    # pkeyboard.press(Key.space)
+    # pkeyboard.release(Key.space)
     data = {}
     data["Name"] = "Rpi"
     data["Response"] = "space"
@@ -97,8 +103,9 @@ def space():
 @app.route("/api/v1/btnLeft")
 def action_left():
     print("btnLeft arrow Called")
-    pkeyboard.press(Key.left)
-    pkeyboard.release(Key.left)
+    keyboard.send("left")
+    # pkeyboard.press(Key.left)
+    # pkeyboard.release(Key.left)
     data = {}
     data["Name"] = "Rpi"
     data["Response"] = "btnLeft arrow"
@@ -111,8 +118,9 @@ def action_left():
 @app.route("/api/v1/btnRight")
 def btnRight():
     print("btnRight arrow Called")
-    pkeyboard.press(Key.right)
-    pkeyboard.release(Key.right)
+    keyboard.send("right")
+    # pkeyboard.press(Key.right)
+    # pkeyboard.release(Key.right)
 
     data = {}
     data["Name"] = "Rpi"
@@ -125,8 +133,9 @@ def btnRight():
 @app.route("/api/v1/btnUp")
 def btnUp():
     print("btnUp arrow Called")
-    pkeyboard.press(Key.up)
-    pkeyboard.release(Key.up)
+    keyboard.send("up")
+    # pkeyboard.press(Key.up)
+    # pkeyboard.release(Key.up)
 
     data = {}
     data["Name"] = "Rpi"
@@ -140,8 +149,9 @@ def btnUp():
 @app.route("/api/v1/btnDown")
 def btnDown():
     print("btnDown arrow Called")
-    pkeyboard.press(Key.down)
-    pkeyboard.release(Key.down)
+    keyboard.send("down")
+    # pkeyboard.press(Key.down)
+    # pkeyboard.release(Key.down)
     data = {}
     data["Name"] = "Rpi"
     data["Response"] = "btnDown arrow"
@@ -154,8 +164,9 @@ def btnDown():
 @app.route("/api/v1/keys/<action>")
 def btnVirtualKey(action):
     print("Nymeric Btn Called")
-    pkeyboard.press(action)
-    pkeyboard.release(action)
+    keyboard.write(action)
+    # pkeyboard.press(action)
+    # pkeyboard.release(action)
     data = {}
     data["Name"] = "Rpi"
     data["Response"] = action
