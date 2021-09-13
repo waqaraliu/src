@@ -1,2 +1,2 @@
 #!/bin/bash
-python3 /home/pi/src/main.py
+sudo python3 /home/pi/src/main.py
