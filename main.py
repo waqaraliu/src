@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, jsonify
-# from zeroconf import ServiceInfo, Zeroconf
 import socket
 import ipaddress
 import sys
@@ -17,7 +16,7 @@ def main():
     # Pass the template data into the template main.html and return it to the user
     print("Home Called")
     data = {}
-    data["Name"] = "Rpi"
+    data["Name"] = "skorboard"
     data["Response"] = "Home"
     response = jsonify(data)
     response.headers.add("Access-Control-Allow-Origin", "*")
@@ -29,7 +28,7 @@ def main():
 def action_auth(action):
     print("auth Called")
     data = {}
-    data["Name"] = "Rpi"
+    data["Name"] = "skorboard"
     data["Service"] = socket.gethostname()
     if action == "get":
         data["Status"] = "Enabled"
@@ -47,7 +46,7 @@ def action_ok():
     # pkeyboard.press(Key.enter)
     # pkeyboard.release(Key.enter)
     data = {}
-    data["Name"] = "Rpi"
+    data["Name"] = "skorboard"
     data["Response"] = "Ok"
     response = jsonify(data)
     response.headers.add("Access-Control-Allow-Origin", "*")
@@ -62,7 +61,7 @@ def backspace():
     # pkeyboard.press(Key.backspace)
     # pkeyboard.release(Key.backspace)
     data = {}
-    data["Name"] = "Rpi"
+    data["Name"] = "skorboard"
     data["Response"] = "backspace"
     response = jsonify(data)
     response.headers.add("Access-Control-Allow-Origin", "*")
@@ -77,7 +76,7 @@ def exit():
     # pkeyboard.press(Key.esc)
     # pkeyboard.release(Key.esc)
     data = {}
-    data["Name"] = "Rpi"
+    data["Name"] = "skorboard"
     data["Response"] = "exit"
     response = jsonify(data)
     response.headers.add("Access-Control-Allow-Origin", "*")
@@ -92,7 +91,7 @@ def space():
     # pkeyboard.press(Key.space)
     # pkeyboard.release(Key.space)
     data = {}
-    data["Name"] = "Rpi"
+    data["Name"] = "skorboard"
     data["Response"] = "space"
     response = jsonify(data)
     response.headers.add("Access-Control-Allow-Origin", "*")
@@ -107,7 +106,7 @@ def action_left():
     # pkeyboard.press(Key.left)
     # pkeyboard.release(Key.left)
     data = {}
-    data["Name"] = "Rpi"
+    data["Name"] = "skorboard"
     data["Response"] = "btnLeft arrow"
     response = jsonify(data)
     response.headers.add("Access-Control-Allow-Origin", "*")
@@ -123,7 +122,7 @@ def btnRight():
     # pkeyboard.release(Key.right)
 
     data = {}
-    data["Name"] = "Rpi"
+    data["Name"] = "skorboard"
     data["Response"] = "btnRight arrow"
     response = jsonify(data)
     response.headers.add("Access-Control-Allow-Origin", "*")
@@ -138,7 +137,7 @@ def btnUp():
     # pkeyboard.release(Key.up)
 
     data = {}
-    data["Name"] = "Rpi"
+    data["Name"] = "skorboard"
     data["Response"] = "btnUp arrow"
     response = jsonify(data)
     response.headers.add("Access-Control-Allow-Origin", "*")
@@ -153,7 +152,7 @@ def btnDown():
     # pkeyboard.press(Key.down)
     # pkeyboard.release(Key.down)
     data = {}
-    data["Name"] = "Rpi"
+    data["Name"] = "skorboard"
     data["Response"] = "btnDown arrow"
     response = jsonify(data)
     response.headers.add("Access-Control-Allow-Origin", "*")
@@ -164,11 +163,16 @@ def btnDown():
 @app.route("/api/v1/keys/<action>")
 def btnVirtualKey(action):
     print("Nymeric Btn Called")
+    if action == "fSlash":
+        action = "/"
+    if action == "dot":
+        action = "."
+    
     keyboard.write(action)
     # pkeyboard.press(action)
     # pkeyboard.release(action)
     data = {}
-    data["Name"] = "Rpi"
+    data["Name"] = "skorboard"
     data["Response"] = action
     response = jsonify(data)
     response.headers.add("Access-Control-Allow-Origin", "*")
