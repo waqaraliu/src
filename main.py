@@ -69,19 +69,19 @@ def backspace():
     print("backspace response Sent")
     return response
 
-@app.route("/api/v1/exit")
-def exit():
-    print("exit Called")
+@app.route("/api/v1/led")
+def led():
+    print("led Called")
     keyboard.send("esc")
     # pkeyboard.press(Key.esc)
     # pkeyboard.release(Key.esc)
     data = {}
     data["Name"] = "skorboard"
-    data["Response"] = "exit"
+    data["Response"] = "led"
     response = jsonify(data)
     response.headers.add("Access-Control-Allow-Origin", "*")
     response.headers.add("Access-Control-Allow-Credentials", "true")
-    print("exit response Sent")
+    print("led response Sent")
     return response
 
 @app.route("/api/v1/space")
