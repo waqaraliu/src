@@ -1,4 +1,4 @@
-APPLICATION Name: Pi Remote
+APPLICATION Name: Pi Remote Test Commit
 
 Note:
 
